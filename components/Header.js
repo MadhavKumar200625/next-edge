@@ -37,6 +37,10 @@ export default function Header() {
       href: "/#how-it-works",
     },
     {
+      label: "About",
+      href: "/about",
+    },
+    {
       label: "Success Stories",
       href: "/success-stories",
     },

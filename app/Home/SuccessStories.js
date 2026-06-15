@@ -104,8 +104,8 @@ export default function SuccessStories() {
             className="lg:pb-2"
           >
             <p className="text-lg leading-8 text-gray-600">
-              See how professionals are using one focused platform to find
-              better opportunities and move their careers forward.
+              Explore representative Indian career journeys shaped around
+              real-world transitions, challenges, and next steps.
             </p>
 
             <Link
@@ -209,6 +209,11 @@ export default function SuccessStories() {
             </div>
           </div>
         </motion.div>
+
+        <p className="mt-5 text-center text-xs leading-5 text-gray-400">
+          Names and details are illustrative until verified candidate
+          testimonials are approved for publication.
+        </p>
       </div>
     </section>
   );
