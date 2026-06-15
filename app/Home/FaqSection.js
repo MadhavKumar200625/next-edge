@@ -13,19 +13,19 @@ const faqs = [
       "Listings are reviewed before being presented as verified opportunities. Candidates should still review every role description and employer requirement before applying.",
   },
   {
-    question: "How does an HR partner earn the ₹9 commission?",
+    question: "How do I improve my chances of finding relevant roles?",
     answer:
-      "An HR partner shares their referral code with candidates. When a referred candidate completes a qualifying subscription, the partner earns the stated commission.",
+      "Complete every section of your profile, keep your skills and experience current, and focus your applications on roles that closely match your background.",
   },
   {
-    question: "Can I join as both a candidate and an HR partner?",
+    question: "Can I update my profile after registering?",
     answer:
-      "The two journeys serve different goals. Choose the account path that best matches how you plan to use NextEdge; account options can be expanded as the platform grows.",
+      "Yes. You can keep your experience, skills, preferences, and other career details current as your professional journey develops.",
   },
   {
     question: "Does registering guarantee a job or interview?",
     answer:
-      "No. NextEdge improves access to opportunities and recruiter connections, but hiring decisions remain with employers and depend on role fit, qualifications, and interviews.",
+      "No. NextEdge improves access to opportunities, but hiring decisions remain with employers and depend on role fit, qualifications, and interviews.",
   },
 ];
 
@@ -44,8 +44,8 @@ export default function FaqSection() {
             Everything to know before you begin.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-8 text-gray-600">
-            Clear answers about candidate access, referrals, and what to
-            expect from the NextEdge network.
+            Clear answers about candidate access, applications, and what to
+            expect from the NextEdge platform.
           </p>
 
           <Link

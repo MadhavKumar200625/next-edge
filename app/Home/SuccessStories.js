@@ -18,18 +18,18 @@ const stories = [
     role: "Frontend Developer",
     location: "Bengaluru",
     quote:
-      "The opportunities felt relevant from day one. I connected with a verified recruiter, interviewed with confidence, and found a role that matched the direction I wanted for my career.",
+      "The opportunities felt relevant from day one. I applied with confidence and found a role that matched the direction I wanted for my career.",
     result: "Hired in 21 days",
     tone: "light",
   },
   {
-    initials: "RM",
-    name: "Rahul Mehta",
-    role: "Independent HR Partner",
-    location: "Pune",
+    initials: "VK",
+    name: "Vikram Kapoor",
+    role: "Product Designer",
+    location: "Mumbai",
     quote:
-      "NextEdge gives me a simple way to help candidates in my network while building a dependable additional income stream.",
-    result: "86 successful referrals",
+      "A clear profile and focused job suggestions helped me stop applying everywhere and start pursuing roles that genuinely fit my experience.",
+    result: "Offer in 4 weeks",
     tone: "green",
   },
   {
@@ -104,9 +104,8 @@ export default function SuccessStories() {
             className="lg:pb-2"
           >
             <p className="text-lg leading-8 text-gray-600">
-              See how candidates and HR partners are using one trusted
-              network to find better opportunities, make meaningful
-              connections, and grow together.
+              See how professionals are using one focused platform to find
+              better opportunities and move their careers forward.
             </p>
 
             <Link
@@ -205,7 +204,7 @@ export default function SuccessStories() {
             <div>
               <p className="text-2xl font-black text-[#0D1630]">350+</p>
               <p className="mt-1 text-sm text-gray-600">
-                trusted hiring partners in the network
+                companies actively hiring
               </p>
             </div>
           </div>

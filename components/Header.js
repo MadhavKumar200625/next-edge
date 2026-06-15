@@ -33,8 +33,8 @@ export default function Header() {
       href: "/jobs",
     },
     {
-      label: "For Recruiters",
-      href: "/recruiters",
+      label: "How It Works",
+      href: "/#how-it-works",
     },
     {
       label: "Success Stories",
@@ -89,13 +89,6 @@ export default function Header() {
 
             {/* RIGHT */}
             <div className="hidden lg:flex items-center gap-6">
-              {/* Recruiter Badge */}
-              <div className="rounded-full bg-[#6F925C]/10 px-4 py-2">
-                <span className="text-sm font-semibold text-[#6F925C]">
-                  Earn ₹9 Per Subscription
-                </span>
-              </div>
-
               <Link
                 href="/login"
                 className="font-semibold text-[#0D1630] hover:text-[#6F925C] transition"
@@ -161,12 +154,6 @@ export default function Header() {
             ))}
 
             <div className="pt-4 border-t">
-              <div className="mb-4 inline-flex rounded-full bg-[#6F925C]/10 px-4 py-2">
-                <span className="text-sm font-semibold text-[#6F925C]">
-                  Earn ₹9 Per Subscription
-                </span>
-              </div>
-
               <div className="flex flex-col gap-3">
                 <Link
                   href="/login"

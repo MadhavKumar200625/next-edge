@@ -47,8 +47,8 @@ export default function FeaturedJobs() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600">
-            Discover handpicked opportunities from
-            trusted recruiters and growing companies.
+            Discover handpicked opportunities from established employers and
+            growing companies.
           </p>
         </div>
 

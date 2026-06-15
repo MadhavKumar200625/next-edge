@@ -2,272 +2,139 @@
 
 import { motion } from "framer-motion";
 import {
-  User,
-  FileText,
-  CreditCard,
+  ArrowRight,
   BriefcaseBusiness,
+  CheckCircle2,
+  CreditCard,
+  FileText,
   Trophy,
-  Users,
-  Share2,
-  BadgeIndianRupee,
-  ArrowDown,
+  User,
 } from "lucide-react";
+import Link from "next/link";
 
 const candidateFlow = [
   {
     icon: User,
-    title: "Register",
+    step: "01",
+    title: "Create Your Account",
+    description: "Register in a few moments and begin your career journey.",
   },
   {
     icon: FileText,
-    title: "Complete Profile",
+    step: "02",
+    title: "Complete Your Profile",
+    description: "Showcase your experience, skills, and career preferences.",
   },
   {
     icon: CreditCard,
-    title: "Activate Plan",
+    step: "03",
+    title: "Activate Access",
+    description: "Unlock the full opportunity network with one simple plan.",
   },
   {
     icon: BriefcaseBusiness,
-    title: "Apply Jobs",
+    step: "04",
+    title: "Apply to Jobs",
+    description: "Discover relevant roles and submit focused applications.",
   },
   {
     icon: Trophy,
-    title: "Get Hired",
+    step: "05",
+    title: "Move Forward",
+    description: "Track progress and take your next career step confidently.",
   },
 ];
 
-const recruiterFlow = [
-  {
-    icon: Users,
-    title: "Join Network",
-  },
-  {
-    icon: FileText,
-    title: "Referral Code",
-  },
-  {
-    icon: Share2,
-    title: "Refer Talent",
-  },
-  {
-    icon: CreditCard,
-    title: "Subscription",
-  },
-  {
-    icon: BadgeIndianRupee,
-    title: "Earn ₹9",
-  },
-];
-
-export default function EcosystemSection() {
+export default function HowItWorks() {
   return (
-    <section className="relative overflow-hidden bg-[#F8FAF7] py-28">
-      {/* Background */}
-
-      <div className="absolute inset-0">
-        <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-[#6F925C]/5 blur-[120px]" />
-        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-[#0D1630]/5 blur-[120px]" />
-      </div>
+    <section
+      id="how-it-works"
+      className="relative overflow-hidden bg-[#F8FAF7] py-24 md:py-28"
+    >
+      <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-[#6F925C]/5 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#0D1630]/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        {/* Heading */}
-
         <div className="text-center">
-          <span className="inline-flex rounded-full bg-[#6F925C]/10 px-4 py-2 text-sm font-semibold text-[#6F925C]">
-            THE NEXTEDGE ECOSYSTEM
+          <span className="inline-flex rounded-full bg-[#6F925C]/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#6F925C]">
+            How It Works
           </span>
-
           <h2 className="mt-6 text-4xl font-black text-[#0D1630] md:text-6xl">
-            Two Journeys.
-            <br />
-            One Opportunity Network.
+            From profile to opportunity
+            <span className="block text-[#6F925C]">in five clear steps.</span>
           </h2>
-
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600">
-            Candidates discover opportunities while recruiters
-            grow their network and earn rewards through successful
-            subscriptions.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-600">
+            A focused journey designed to help you spend less time navigating
+            and more time applying to roles that fit.
           </p>
         </div>
 
-        {/* Journey Grid */}
+        <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+          {candidateFlow.map((item, index) => {
+            const Icon = item.icon;
 
-        <div className="mt-24 grid gap-10 lg:grid-cols-2">
-          {/* Candidate */}
-
-          <div className="rounded-[40px] border border-[#6F925C]/15 bg-white p-10 shadow-sm">
-            <div className="mb-8">
-              <span className="text-sm font-semibold uppercase tracking-widest text-[#6F925C]">
-                Candidate Journey
-              </span>
-
-              <h3 className="mt-3 text-3xl font-bold text-[#0D1630]">
-                Build Your Career
-              </h3>
-            </div>
-
-            <div className="space-y-5">
-              {candidateFlow.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{
-                      opacity: 0,
-                      x: -20,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    transition={{
-                      delay: index * 0.1,
-                    }}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#6F925C]/10">
-                        <Icon
-                          size={24}
-                          className="text-[#6F925C]"
-                        />
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-[#0D1630]">
-                          {item.title}
-                        </h4>
-                      </div>
-                    </div>
-
-                    {index !== candidateFlow.length - 1 && (
-                      <div className="ml-7 mt-3 h-8 w-[2px] bg-[#6F925C]/20" />
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Recruiter */}
-
-          <div className="rounded-[40px] bg-[#0D1630] p-10 text-white">
-            <div className="mb-8">
-              <span className="text-sm font-semibold uppercase tracking-widest text-[#6F925C]">
-                Recruiter Journey
-              </span>
-
-              <h3 className="mt-3 text-3xl font-bold">
-                Earn While Helping Talent
-              </h3>
-            </div>
-
-            <div className="space-y-5">
-              {recruiterFlow.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{
-                      opacity: 0,
-                      x: 20,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    transition={{
-                      delay: index * 0.1,
-                    }}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10">
-                        <Icon size={24} />
-                      </div>
-
-                      <h4 className="font-semibold">
-                        {item.title}
-                      </h4>
-                    </div>
-
-                    {index !== recruiterFlow.length - 1 && (
-                      <div className="ml-7 mt-3 h-8 w-[2px] bg-white/10" />
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
+            return (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.45 }}
+                className="relative rounded-[28px] border border-[#0D1630]/8 bg-white p-6 shadow-sm"
+              >
+                <span className="absolute right-5 top-5 text-sm font-black text-[#6F925C]/35">
+                  {item.step}
+                </span>
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#6F925C]/10 text-[#6F925C]">
+                  <Icon size={23} />
+                </div>
+                <h3 className="mt-7 text-lg font-bold text-[#0D1630]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-gray-600">
+                  {item.description}
+                </p>
+              </motion.article>
+            );
+          })}
         </div>
 
-        {/* Center Value Proposition */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-10 flex flex-col items-center justify-between gap-8 rounded-[32px] bg-[#0D1630] p-8 text-white md:flex-row md:p-10"
+        >
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#A9C29A]">
+              Career Access
+            </p>
+            <h3 className="mt-3 text-3xl font-black">Get started for ₹99</h3>
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/65">
+              {[
+                "Verified listings",
+                "Complete candidate profile",
+                "Simple applications",
+              ].map((item) => (
+                <span key={item} className="inline-flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-[#A9C29A]" />
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
 
-        <div className="mt-24 text-center">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="mx-auto max-w-4xl rounded-[40px] bg-white p-12 shadow-sm"
+          <Link
+            href="/register"
+            className="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#6F925C] px-7 py-4 font-bold transition-colors hover:bg-[#5F7D4F] md:w-auto"
           >
-            <ArrowDown
-              className="mx-auto mb-6 text-[#6F925C]"
-              size={40}
+            Create Your Profile
+            <ArrowRight
+              size={19}
+              className="transition-transform group-hover:translate-x-1"
             />
-
-            <h3 className="text-4xl font-black text-[#0D1630]">
-              Candidate Pays ₹99
-            </h3>
-
-            <div className="my-8 h-px bg-gray-200" />
-
-            <div className="grid gap-8 md:grid-cols-3">
-              <div>
-                <h4 className="text-xl font-bold text-[#0D1630]">
-                  Candidate
-                </h4>
-
-                <p className="mt-2 text-gray-600">
-                  Access verified opportunities.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-xl font-bold text-[#0D1630]">
-                  Recruiter
-                </h4>
-
-                <p className="mt-2 text-gray-600">
-                  Earn ₹9 commission.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-xl font-bold text-[#0D1630]">
-                  Platform
-                </h4>
-
-                <p className="mt-2 text-gray-600">
-                  Connect talent with employers.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

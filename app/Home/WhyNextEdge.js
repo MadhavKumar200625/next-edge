@@ -17,9 +17,9 @@ const benefits = [
   },
   {
     icon: Users,
-    title: "Trusted recruiter network",
+    title: "Direct employer visibility",
     description:
-      "Connect with recruitment partners who understand the role, process, and employer expectations.",
+      "Put a complete professional profile in front of companies searching for relevant talent.",
   },
   {
     icon: FileUser,
@@ -69,7 +69,7 @@ export default function WhyNextEdge() {
               {[
                 "Skills aligned with the role",
                 "Experience range matched",
-                "Recruiter ready to connect",
+                "Profile ready to apply",
               ].map((item) => (
                 <div
                   key={item}
@@ -106,8 +106,8 @@ export default function WhyNextEdge() {
             Built to make every career connection count.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-            NextEdge brings candidates, recruiters, and employers into a more
-            focused opportunity network, with clarity at every step.
+            NextEdge brings candidates and employers into a more focused
+            opportunity platform, with clarity at every step.
           </p>
 
           <div className="mt-10 grid gap-x-8 gap-y-9 sm:grid-cols-2">

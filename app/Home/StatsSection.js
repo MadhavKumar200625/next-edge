@@ -13,11 +13,11 @@ const stats = [
   },
   {
     number: "350+",
-    label: "Hiring Partners",
+    label: "Companies Hiring",
   },
   {
-    number: "₹2.4L+",
-    label: "Commissions Paid",
+    number: "40+",
+    label: "Cities Covered",
   },
 ];
 
@@ -53,9 +53,8 @@ export default function StatsSection() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600">
-            Connecting talented professionals with
-            verified recruiters while creating earning
-            opportunities for HR partners.
+            Helping talented professionals discover verified opportunities
+            across industries, locations, and experience levels.
           </p>
         </motion.div>
 

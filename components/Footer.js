@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  BadgeIndianRupee,
   BriefcaseBusiness,
   CheckCircle2,
 } from "lucide-react";
@@ -9,7 +8,7 @@ import {
 const footerLinks = {
   Platform: [
     { label: "Find Jobs", href: "/jobs" },
-    { label: "For Recruiters", href: "/recruiters" },
+    { label: "How It Works", href: "/#how-it-works" },
     { label: "Success Stories", href: "/success-stories" },
     { label: "Sign In", href: "/login" },
   ],
@@ -42,8 +41,8 @@ export default function Footer() {
             </Link>
 
             <p className="mt-6 max-w-md leading-7 text-white/60">
-              A focused opportunity network connecting ambitious candidates,
-              trusted recruiters, and employers ready to hire.
+              A focused career platform helping ambitious candidates discover
+              verified opportunities from companies ready to hire.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
@@ -52,8 +51,8 @@ export default function Footer() {
                 Verified opportunities
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-                <BadgeIndianRupee size={16} className="text-[#A9C29A]" />
-                Partner rewards
+                <BriefcaseBusiness size={16} className="text-[#A9C29A]" />
+                Career-focused tools
               </span>
             </div>
           </div>
