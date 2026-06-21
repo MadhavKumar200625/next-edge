@@ -111,6 +111,8 @@ export default function JoinNextEdge() {
             })}
           </div>
         </div>
+        {/* image14 placeholder */}
+        <div className="absolute bottom-6 right-6 w-36 image-slot text-sm" data-name="image14">image14</div>
       </div>
     </section>
   );

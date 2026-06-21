@@ -110,6 +110,9 @@ export default function WhyNextEdge() {
             opportunity platform, with clarity at every step.
           </p>
 
+          {/* image5 placeholder */}
+          <div className="mt-6 image-slot" data-name="image5">image5</div>
+
           <div className="mt-10 grid gap-x-8 gap-y-9 sm:grid-cols-2">
             {benefits.map((benefit) => {
               const Icon = benefit.icon;

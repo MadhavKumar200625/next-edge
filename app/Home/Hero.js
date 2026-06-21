@@ -153,6 +153,10 @@ export default function Hero() {
             </motion.div>
 
             <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6F925C]/10 blur-[100px]" />
+            {/* image1 placeholder */}
+            <div className="image-slot absolute -bottom-6 left-4 w-40 text-sm" data-name="image1">
+              image1
+            </div>
           </div>
         </div>
       </div>

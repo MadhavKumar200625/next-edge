@@ -94,6 +94,9 @@ export default function ContactPage() {
           </aside>
 
           <ContactForm />
+        
+        {/* image9 placeholder */}
+        <div className="col-span-full mt-6 image-slot" data-name="image9">image9</div>
         </div>
       </section>
     </>

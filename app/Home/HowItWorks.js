@@ -67,6 +67,9 @@ export default function HowItWorks() {
             A focused journey designed to help you spend less time navigating
             and more time applying to roles that fit.
           </p>
+        
+          {/* image6 placeholder */}
+          <div className="mx-auto mt-6 max-w-3xl image-slot" data-name="image6">image6</div>
         </div>
 
         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-5">

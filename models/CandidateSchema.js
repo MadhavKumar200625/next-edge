@@ -177,7 +177,7 @@ const CandidateSchema = new mongoose.Schema(
 
     jobType: {
       type: String,
-      enum: ["Full Time", "Part Time", "Remote"],
+      enum: ["Full Time", "Part Time", "Remote",""],
       default: "",
     },
 
@@ -204,6 +204,12 @@ const CandidateSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Employer",
       default: null,
+    },
+
+    // whether commission for this candidate signup/login has been credited to employer
+    commissionCredited: {
+      type: Boolean,
+      default: false,
     },
 
     // Subscription

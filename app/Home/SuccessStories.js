@@ -94,6 +94,8 @@ export default function SuccessStories() {
               Career moves that
               <span className="text-[#6F925C]"> changed the next chapter.</span>
             </h2>
+            {/* image7 placeholder */}
+            <div className="mt-6 image-slot" data-name="image7">image7</div>
           </motion.div>
 
           <motion.div

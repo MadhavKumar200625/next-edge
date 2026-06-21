@@ -67,6 +67,10 @@ export default function JobCategories() {
               Find the field where your next move belongs.
             </h2>
           </div>
+          {/* image3 placeholder */}
+          <div className="mx-auto mt-8 max-w-7xl px-6">
+            <div className="image-slot" data-name="image3">image3</div>
+          </div>
 
           <p className="max-w-md text-lg leading-8 text-gray-600">
             Browse opportunities by expertise and discover roles aligned with

@@ -51,6 +51,10 @@ export default function FeaturedJobs() {
             growing companies.
           </p>
         </div>
+        {/* image4 placeholder */}
+        <div className="mx-auto mt-10 max-w-7xl px-6">
+          <div className="image-slot" data-name="image4">image4</div>
+        </div>
 
         {/* Jobs */}
 

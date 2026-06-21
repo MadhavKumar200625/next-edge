@@ -155,6 +155,8 @@ export default function AboutPage() {
                 <p className="text-sm text-gray-500">companies hiring</p>
               </div>
             </div>
+            {/* image8 placeholder */}
+            <div className="image-slot mt-6" data-name="image8">image8</div>
           </div>
         </div>
       </section>

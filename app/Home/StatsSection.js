@@ -58,6 +58,9 @@ export default function StatsSection() {
           </p>
         </motion.div>
 
+        {/* image2 placeholder */}
+        <div className="image-slot mt-6" data-name="image2">image2</div>
+
         {/* Stats */}
 
         <div className="grid gap-y-16 md:grid-cols-2 lg:grid-cols-4">
