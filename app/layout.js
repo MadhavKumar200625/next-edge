@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "NextEdge | Verified Jobs & Career Opportunities",
-    template: "%s | NextEdge",
+    default: "NextEdge Talant Consultancy | Verified Jobs & Career Opportunities",
+    template: "%s | NextEdge Talant Consultancy Talant Consultancy",
   },
   description:
-    "Discover verified job opportunities, build your professional profile, and take the next step in your career with NextEdge.",
+    "Discover verified job opportunities, build your professional profile, and take the next step in your career with NextEdge Talant Consultancy.",
 };
 
 export default function RootLayout({ children }) {

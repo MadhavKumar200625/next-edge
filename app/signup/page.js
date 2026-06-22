@@ -139,7 +139,7 @@ export default function SignupPage() {
             <div className="flex items-center justify-between mt-2">
               <button
                 type="submit"
-                disabled={loading}
+                disabled={true}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0D1630] px-6 py-2 text-sm font-semibold text-white shadow hover:bg-[#152247] disabled:opacity-60"
               >
                 {loading ? "Processing..." : "Make Payment"}

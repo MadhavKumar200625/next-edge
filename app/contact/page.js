@@ -10,7 +10,7 @@ import ContactForm from "./ContactForm";
 export const metadata = {
   title: "Contact Us",
   description:
-    "Contact NextEdge for help with your account, candidate profile, job discovery, applications, or general platform questions.",
+    "Contact NextEdge Talant Consultancy for help with your account, candidate profile, job discovery, applications, or general platform questions.",
 };
 
 const topics = [

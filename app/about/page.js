@@ -1,296 +1,154 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  BadgeCheck,
-  BriefcaseBusiness,
-  Building2,
-  CheckCircle2,
-  Compass,
-  FileUser,
-  Search,
-  ShieldCheck,
-  Sparkles,
-  Target,
-} from "lucide-react";
+import React from "react";
 
 export const metadata = {
-  title: "About Us",
-  description:
-    "Learn how NextEdge helps professionals build stronger profiles, discover verified jobs, and approach their next career move with clarity.",
+  title: "About NextEdge-Talent",
+  description: "About NextEdge-Talent - Right Guidance, Better Careers",
 };
 
-const values = [
+const leaders = [
   {
-    icon: ShieldCheck,
-    title: "Trust before volume",
-    description:
-      "We prioritize clear, relevant opportunities so candidates can focus on roles worth their time.",
+    name: "Mr. Nihal Anand – Founder & CEO",
+    paragraphs: [
+      "Mr. Nihal Anand leads NextEdge-Talent as the Founder & CEO, working towards helping professionals discover suitable career opportunities and supporting organizations with effective talent solutions.",
+      "With a background in Computer Engineering and experience in recruitment consulting, business management, and talent acquisition, he focuses on helping candidates navigate their career paths while supporting organizations in finding suitable talent.",
+      "His expertise includes career consulting, recruitment strategy, workforce solutions, leadership development, and business operations. Through NextEdge-Talent, he is committed to creating meaningful connections between talent and opportunity while promoting professional growth and career advancement.",
+      "Driven by a people-first approach, Nihal works towards building a transparent, reliable, and growth-oriented recruitment ecosystem for both candidates and employers.",
+    ],
   },
   {
-    icon: Target,
-    title: "Relevance over noise",
-    description:
-      "Career discovery should feel focused. Better context leads to more intentional applications.",
+    name: "Ms. Lavina Kapoor - Operations & Delivery Head",
+    paragraphs: [
+      "Ms. Lavina Kapoor supports the management of operational workflows and delivery processes at NextEdge-Talent, helping maintain a smooth experience for candidates and employers.",
+      "With a strong focus on efficiency, organization, and service quality, she plays an important role in maintaining streamlined operations and delivering a professional experience for both candidates and employers.",
+      "Her commitment to operational excellence helps ensure that recruitment and support processes remain structured, reliable, and candidate-focused.",
+    ],
   },
   {
-    icon: Compass,
-    title: "Clarity at every step",
-    description:
-      "From building a profile to applying for a role, each action should feel understandable and purposeful.",
-  },
-];
-
-const experience = [
-  {
-    icon: FileUser,
-    number: "01",
-    title: "Tell your career story",
-    description:
-      "Bring your experience, skills, and preferences together in one complete professional profile.",
+    name: "Ms. Anshu - HR & Admin",
+    paragraphs: [
+      "Ms. Anshu is the HR & Admin at NextEdge-Talent, contributing to recruitment coordination, talent acquisition support, and HR operations.",
+      "With an interest in human resources and people management, she focuses on candidate communication, profile coordination, and maintaining smooth recruitment workflows.",
+      "Her expertise includes recruitment support, candidate engagement, HR coordination, and process management, helping create an organized and efficient experience for both candidates and the team.",
+    ],
   },
   {
-    icon: Search,
-    number: "02",
-    title: "Discover relevant work",
-    description:
-      "Explore verified opportunities across industries, locations, and experience levels.",
+    name: "Ms. Ranjani - Director – Skill Support & Guidance",
+    paragraphs: [
+      "Ms. Ranjani is the Director – Skill Support & Guidance at NextEdge-Talent, contributing to the organization’s growth through continuous support, guidance, and strategic involvement.",
+      "She plays an important role in supporting business initiatives, encouraging skill development, and helping create a positive growth environment for candidates and the team.",
+      "Her focus lies in providing guidance, strengthening processes, and supporting the vision of building better career opportunities through NextEdge-Talent.",
+    ],
   },
   {
-    icon: BriefcaseBusiness,
-    number: "03",
-    title: "Apply with confidence",
-    description:
-      "Use a simpler application journey to focus on the roles that genuinely fit your next move.",
+    name: "Ms. Damini Choudhary – Business Partner",
+    paragraphs: [
+      "Ms. Damini Choudhary serves as the Business Partner at NextEdge-Talent, supporting business development, strategic initiatives, and organizational growth.",
+      "With a strong passion for learning and exploring new opportunities, she contributes to building meaningful relationships and supporting the company's mission of connecting talented professionals with the right career opportunities. Her interest in market trends, professional development, and business collaboration helps strengthen the organization's growth journey.",
+      "Through her proactive approach and commitment to continuous improvement, Damini plays an important role in supporting business objectives while contributing to a positive and growth-focused environment for both candidates and employers.",
+    ],
   },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      <section className="relative overflow-hidden bg-[#FAFAFA] py-10">
-        <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-[#6F925C]/10 blur-[140px]" />
-        <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#0D1630]/5 blur-[120px]" />
+    <main className="bg-white px-6 py-14 md:py-20">
+      <div className="mx-auto max-w-6xl">
+        <section>
+          <h1 className="text-4xl font-black leading-tight text-[#0D1630] md:text-6xl">
+            About NextEdge-Talent
+          </h1>
+          <h2 className="mt-3 text-2xl font-bold text-gray-700">
+            Right Guidance, Better Careers
+          </h2>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#6F925C]/20 bg-[#6F925C]/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#5F7D4F]">
-              <Sparkles size={16} />
-              About NextEdge
-            </div>
-            <h1 className="mt-6 text-5xl font-black leading-tight text-[#0D1630] md:text-7xl">
-              Better career moves begin with
-              <span className="text-[#6F925C]"> better clarity.</span>
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-600">
-              NextEdge is a career opportunity platform designed to help
-              professionals present their experience clearly, discover
-              verified roles, and move through applications with confidence.
+          <div className="mt-7 max-w-3xl space-y-4 text-lg leading-8 text-gray-600">
+            <p>
+              NextEdge-Talent is a professional career consultancy platform
+              focused on bridging the gap between jobseekers and employers
+              across India.
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link
-                href="/jobs"
-                className="group inline-flex items-center gap-2 rounded-2xl bg-[#6F925C] px-7 py-4 font-bold text-white transition-colors hover:bg-[#5F7D4F]"
-              >
-                Explore Opportunities
-                <ArrowRight
-                  size={19}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
-              <Link
-                href="/contact"
-                className="rounded-2xl border border-[#0D1630]/15 bg-white px-7 py-4 font-bold text-[#0D1630] transition-colors hover:border-[#0D1630] hover:bg-[#0D1630] hover:text-white"
-              >
-                Contact Us
-              </Link>
-            </div>
+            <p>
+              We provide structured recruitment support, career guidance, and
+              placement assistance for students and freshers.
+            </p>
           </div>
+        </section>
 
-          <div className="relative mx-auto w-full max-w-[520px]">
-            <div className="rounded-[40px] bg-[#0D1630] p-8 text-white shadow-[0_30px_90px_rgba(13,22,48,0.22)] md:p-10">
-              <div className="flex items-start justify-between gap-5">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#6F925C]">
-                  <BadgeCheck size={28} />
+        <section className="mt-14">
+          <h3 className="text-3xl font-black text-[#0D1630]">
+            Leadership Team
+          </h3>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {leaders.map((leader) => (
+              <article
+                key={leader.name}
+                className="flex flex-col gap-5 border border-[#0D1630]/10 bg-[#F8FAF7] p-6 sm:flex-row"
+              >
+                <div
+                  aria-hidden="true"
+                  className="mx-auto h-32 w-32 shrink-0 rounded-full border-2 border-dashed border-[#6F925C]/35 bg-white shadow-sm sm:mx-0"
+                />
+                <div>
+                  <h4 className="text-xl font-black leading-snug text-[#0D1630]">
+                    {leader.name}
+                  </h4>
+                  <div className="mt-3 space-y-3 leading-7 text-gray-600">
+                    {leader.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
-                <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#A9C29A]">
-                  Career Ready
-                </span>
-              </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-              <h2 className="mt-10 text-3xl font-black">
-                One profile built around your potential.
-              </h2>
-              <p className="mt-4 leading-7 text-white/60">
-                Your experience is more than a list of jobs. NextEdge helps
-                organize the details employers need to understand your fit.
+        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+          <div className="border-l-4 border-[#6F925C] pl-6">
+            <h3 className="text-3xl font-black text-[#0D1630]">Our Vision</h3>
+            <div className="mt-4 space-y-3 leading-7 text-gray-600">
+              <p>
+                To become a trusted career partner for students and job seekers
+                by providing reliable guidance, transparent support, and
+                meaningful career opportunities.
               </p>
 
-              <div className="mt-8 space-y-4 border-t border-white/10 pt-8">
-                {[
-                  "Skills and experience in one place",
-                  "Preferences that guide discovery",
-                  "A focused path to relevant roles",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 text-sm text-white/80"
-                  >
-                    <CheckCircle2
-                      size={18}
-                      className="shrink-0 text-[#A9C29A]"
-                    />
-                    {item}
-                  </div>
-                ))}
-              </div>
+              <p>
+                NextEdge-Talent envisions building a platform where every
+                individual can access the right career direction, discover
+                genuine opportunities, and grow professionally with confidence.
+                The vision is to create a transparent and supportive ecosystem
+                that connects skilled talent with suitable employers while
+                contributing to long-term career success across India.
+              </p>
             </div>
+          </div>
 
-            <div className="absolute -bottom-8 -left-3 flex items-center gap-4 rounded-3xl border border-[#0D1630]/10 bg-white p-5 shadow-[0_18px_50px_rgba(13,22,48,0.12)] sm:-left-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#6F925C]/10 text-[#6F925C]">
-                <Building2 size={23} />
-              </div>
-              <div>
-                <p className="text-xl font-black text-[#0D1630]">350+</p>
-                <p className="text-sm text-gray-500">companies hiring</p>
-              </div>
+          <div className="border-l-4 border-[#6F925C] pl-6">
+            <h3 className="text-3xl font-black text-[#0D1630]">Our Mission</h3>
+            <div className="mt-4 space-y-3 leading-7 text-gray-600">
+              <p>
+                To help individuals achieve their career goals by connecting
+                them with suitable opportunities and supporting their
+                professional growth.
+              </p>
+
+              <p>
+                NextEdge-Talent aims to build a transparent and reliable
+                platform that connects talented professionals with the right
+                employers. We focus on providing career guidance, recruitment
+                support, and talent solutions that help individuals move forward
+                in their careers while enabling organizations to discover
+                suitable talent. Through our people-focused approach, we strive
+                to create meaningful opportunities, strengthen professional
+                connections, and contribute to long-term career success.
+              </p>
             </div>
-            {/* image8 placeholder */}
-            <div className="image-slot mt-6" data-name="image8">image8</div>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-24 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#6F925C]">
-              Our Purpose
-            </span>
-            <h2 className="mt-4 text-4xl font-black leading-tight text-[#0D1630] md:text-5xl">
-              Make opportunity discovery feel less overwhelming.
-            </h2>
-          </div>
-          <div className="space-y-6 text-lg leading-8 text-gray-600">
-            <p>
-              Finding the right role often means navigating scattered
-              listings, repeating the same information, and applying without
-              enough context. That process can make talented people feel
-              invisible.
-            </p>
-            <p>
-              NextEdge brings profile building, job discovery, and
-              applications into one focused experience. The goal is simple:
-              help candidates understand where they fit and take each next
-              step with greater confidence.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#F8FAF7] py-24 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#6F925C]">
-              What Guides Us
-            </span>
-            <h2 className="mt-4 text-4xl font-black text-[#0D1630] md:text-5xl">
-              A more thoughtful career platform.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {values.map((value) => {
-              const Icon = value.icon;
-
-              return (
-                <article
-                  key={value.title}
-                  className="rounded-[32px] border border-[#0D1630]/8 bg-white p-8 shadow-sm"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#6F925C]/10 text-[#6F925C]">
-                    <Icon size={23} />
-                  </div>
-                  <h3 className="mt-7 text-xl font-bold text-[#0D1630]">
-                    {value.title}
-                  </h3>
-                  <p className="mt-3 leading-7 text-gray-600">
-                    {value.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-24 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
-            <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#6F925C]">
-                The Experience
-              </span>
-              <h2 className="mt-4 max-w-2xl text-4xl font-black leading-tight text-[#0D1630] md:text-5xl">
-                Designed around your next career step.
-              </h2>
-            </div>
-            <p className="max-w-md text-lg leading-8 text-gray-600">
-              A straightforward journey from presenting your strengths to
-              finding work that matches them.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {experience.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article
-                  key={item.title}
-                  className="relative overflow-hidden rounded-[32px] bg-[#0D1630] p-8 text-white"
-                >
-                  <span className="absolute right-6 top-4 text-6xl font-black text-white/5">
-                    {item.number}
-                  </span>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#6F925C]">
-                    <Icon size={23} />
-                  </div>
-                  <h3 className="mt-8 text-xl font-bold">{item.title}</h3>
-                  <p className="mt-3 leading-7 text-white/60">
-                    {item.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#F8FAF7] px-6 py-24">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[40px] bg-[#6F925C] px-7 py-14 text-center text-white md:px-12 md:py-18">
-          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/15" />
-          <div className="relative mx-auto max-w-3xl">
-            <h2 className="text-4xl font-black md:text-5xl">
-              Ready to make your next move?
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/75">
-              Build your profile, explore verified opportunities, and begin a
-              more focused job search.
-            </p>
-            <Link
-              href="/register"
-              className="group mt-8 inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-4 font-bold text-[#0D1630] transition-colors hover:bg-[#F0F4EE]"
-            >
-              Create Your Profile
-              <ArrowRight
-                size={19}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
+        </section>
+      </div>
+    </main>
   );
 }

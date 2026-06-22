@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "What does the ₹99 candidate subscription include?",
     answer:
-      "It activates access to the NextEdge opportunity network, allowing candidates to complete their profile and apply for relevant verified roles available on the platform.",
+      "It activates access to the NextEdge Talant Consultancy opportunity network, allowing candidates to complete their profile and apply for relevant verified roles available on the platform.",
   },
   {
     question: "How are job opportunities verified?",
@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Does registering guarantee a job or interview?",
     answer:
-      "No. NextEdge improves access to opportunities, but hiring decisions remain with employers and depend on role fit, qualifications, and interviews.",
+      "No. NextEdge Talant Consultancy improves access to opportunities, but hiring decisions remain with employers and depend on role fit, qualifications, and interviews.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function FaqSection() {
           </h2>
           <p className="mt-6 max-w-md text-lg leading-8 text-gray-600">
             Clear answers about candidate access, applications, and what to
-            expect from the NextEdge platform.
+            expect from the NextEdge Talant Consultancy platform.
           </p>
 
           <Link
