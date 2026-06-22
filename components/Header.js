@@ -71,7 +71,7 @@ export default function Header() {
                 alt="NextEdge"
                 width={180}
                 height={70}
-                className="h-14 w-auto object-contain"
+                className="h-24 w-auto object-contain"
                 priority
               />
             </Link>
