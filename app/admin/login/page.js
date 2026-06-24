@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -48,14 +49,13 @@ export default function AdminLogin() {
 
           <div className="flex items-center justify-between">
             <button disabled={loading} className="rounded-full bg-[#0D1630] px-6 py-2 text-white">{loading? 'Signing in...':'Sign In'}</button>
-            <a href="/" className="text-sm text-[#6F925C]">Back home</a>
+            <Link href="/" className="text-sm text-[#6F925C]">Back home</Link>
           </div>
         </form>
       </div>
     </div>
   );
 }
-
 
 
 

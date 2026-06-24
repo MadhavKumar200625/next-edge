@@ -22,13 +22,26 @@ export default function EmployerPostJob() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const payload = { title, department: '', companyLogo: '', location, city, state: stateVal, workMode, employmentType, industry: '', experienceMin: 0, experienceMax: 0, salaryMin: 0, salaryMax: 0, vacancies: 1, skillsRequired: skills.split(',').map(s=>s.trim()).filter(Boolean), qualificationRequired: '', description, responsibilities: [], requirements: [], benefits: [] };
+    let employer = null;
+    try {
+      employer = JSON.parse(localStorage.getItem('employer') || 'null');
+    } catch (err) {
+      employer = null;
+    }
+
+    if (!employer?.id) {
+      setMessage('Please sign in again before posting a job.');
+      router.replace('/employer/login');
+      return;
+    }
+
+    const payload = { employerId: employer.id, title, department: '', companyLogo: '', location, city, state: stateVal, workMode, employmentType, industry: '', experienceMin: 0, experienceMax: 0, salaryMin: 0, salaryMax: 0, vacancies: 1, skillsRequired: skills.split(',').map(s=>s.trim()).filter(Boolean), qualificationRequired: '', description, responsibilities: [], requirements: [], benefits: [] };
 
     try {
       const res = await fetch('/api/jobs/create', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
       const data = await res.json();
       if (!res.ok) { setMessage('Failed to post job: ' + (data.error || res.statusText)); return; }
-      setMessage('Job posted successfully.');
+      setMessage('Job submitted successfully. It will appear after admin approval.');
       setTimeout(()=> router.push('/employer/dashboard'), 1000);
     } catch (err) {
       setMessage(String(err.message || err));

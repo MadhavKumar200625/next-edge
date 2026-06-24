@@ -81,15 +81,21 @@ export default function AboutPage() {
           </h3>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {leaders.map((leader) => (
+            {leaders.map((leader,i) => (
               <article
                 key={leader.name}
                 className="flex flex-col gap-5 border border-[#0D1630]/10 bg-[#F8FAF7] p-6 sm:flex-row"
               >
                 <div
-                  aria-hidden="true"
-                  className="mx-auto h-32 w-32 shrink-0 rounded-full border-2 border-dashed border-[#6F925C]/35 bg-white shadow-sm sm:mx-0"
-                />
+  aria-hidden="true"
+  className="mx-auto h-40 w-40 shrink-0 overflow-hidden rounded-full border-2 border-dashed border-[#6F925C]/35 bg-white shadow-sm sm:mx-0"
+>
+  <img
+    src={`/leaders/${i + 1}.png`}
+    alt={leader.name}
+    className="h-full w-full object-cover"
+  />
+</div>
                 <div>
                   <h4 className="text-xl font-black leading-snug text-[#0D1630]">
                     {leader.name}
