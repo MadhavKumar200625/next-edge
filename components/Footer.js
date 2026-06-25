@@ -19,7 +19,7 @@ const footerLinks = {
     { label: "Help Center", href: "/help" },
   ],
   Legal: [
-    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms of Use", href: "/terms" },
     { label: "Refund Policy", href: "/refund-policy" },
   ],
