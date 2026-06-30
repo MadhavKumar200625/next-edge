@@ -128,7 +128,7 @@ export default function HowItWorks() {
           </div>
 
           <Link
-            href="/register"
+            href="/signup"
             className="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#6F925C] px-7 py-4 font-bold transition-colors hover:bg-[#5F7D4F] md:w-auto"
           >
             Create Your Profile

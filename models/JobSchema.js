@@ -20,6 +20,21 @@ const JobSchema = new mongoose.Schema(
       trim: true,
     },
 
+    positionName: {
+      type: String,
+      default: "",
+    },
+
+    hrName: {
+      type: String,
+      default: "",
+    },
+
+    hrNumber: {
+      type: String,
+      default: "",
+    },
+
     department: {
       type: String,
       default: "",
@@ -52,7 +67,7 @@ const JobSchema = new mongoose.Schema(
 
     workMode: {
       type: String,
-      enum: ["Remote", "Hybrid", "Onsite"],
+      enum: ["Remote", "Hybrid", "Onsite", "Work From Office"],
       default: "Onsite",
     },
 
@@ -60,7 +75,9 @@ const JobSchema = new mongoose.Schema(
       type: String,
       enum: [
         "Full Time",
+        "Full-Time",
         "Part Time",
+        "Part-Time",
         "Contract",
         "Internship",
         "Freelance"
@@ -93,6 +110,11 @@ const JobSchema = new mongoose.Schema(
       default: 0,
     },
 
+    salaryRange: {
+      type: String,
+      default: "",
+    },
+
     vacancies: {
       type: Number,
       default: 1,
@@ -104,6 +126,17 @@ const JobSchema = new mongoose.Schema(
     },
 
     qualificationRequired: {
+      type: String,
+      default: "",
+    },
+
+    preferredCandidates: {
+      type: String,
+      enum: ["Female Candidates", "Male Candidates", "Both", ""],
+      default: "",
+    },
+
+    noticePeriod: {
       type: String,
       default: "",
     },
@@ -126,6 +159,43 @@ const JobSchema = new mongoose.Schema(
     benefits: {
       type: [String],
       default: [],
+    },
+
+    workingDays: {
+      type: String,
+      default: "",
+    },
+
+    shiftTiming: {
+      type: String,
+      default: "",
+    },
+
+    cabFacility: {
+      type: String,
+      enum: ["Yes", "No", ""],
+      default: "",
+    },
+
+    mealFacility: {
+      type: String,
+      enum: ["Yes", "No", ""],
+      default: "",
+    },
+
+    requiredSoftwareTools: {
+      type: String,
+      default: "",
+    },
+
+    languagesRequired: {
+      type: [String],
+      default: [],
+    },
+
+    interviewProcess: {
+      type: String,
+      default: "",
     },
 
     applicationFields: [

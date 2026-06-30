@@ -15,9 +15,22 @@ function pad(n) {
 export async function POST(req) {
   try {
     await connectDB();
-    const { fullName, email, phone, password } = await req.json();
-    if (!fullName || !email || !phone || !password) {
-      return new Response(JSON.stringify({ error: 'fullName,email,phone,password required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    const {
+      fullName,
+      email,
+      phone,
+      companyName,
+      designation,
+      companyWebsite,
+      industryType,
+      linkedInCompanyPage,
+      socialMediaLinks,
+      genderPreference,
+      hiringManagerName,
+      hiringManagerPhone,
+    } = await req.json();
+    if (!fullName || !email || !phone || !companyName || !designation || !industryType) {
+      return new Response(JSON.stringify({ error: 'fullName,email,phone,companyName,designation,industryType required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const exists = await Employer.findOne({ $or: [{ email }, { phone }] });
@@ -36,9 +49,26 @@ export async function POST(req) {
       referral = `${base}${pad(seq)}`;
     }
 
-    const encoded = Buffer.from(password).toString('base64');
+    const encoded = Buffer.from(String(phone)).toString('base64');
 
-    const created = await Employer.create({ fullName, email, phone, password: encoded, referralCode: referral, approvalStatus: 'approved', isActive: true });
+    const created = await Employer.create({
+      fullName,
+      email,
+      phone,
+      password: encoded,
+      companyName,
+      designation,
+      companyWebsite: companyWebsite || '',
+      industryType,
+      linkedInCompanyPage: linkedInCompanyPage || '',
+      socialMediaLinks: socialMediaLinks || {},
+      genderPreference: genderPreference || '',
+      hiringManagerName: hiringManagerName || '',
+      hiringManagerPhone: hiringManagerPhone || '',
+      referralCode: referral,
+      approvalStatus: 'approved',
+      isActive: true,
+    });
 
     return new Response(JSON.stringify({ ok: true, employer: { id: created._id, email: created.email, referralCode: created.referralCode } }), { status: 201, headers: { 'Content-Type': 'application/json' } });
   } catch (err) {

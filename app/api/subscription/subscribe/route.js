@@ -1,6 +1,7 @@
 import connectDB from '../../../../lib/mongodb';
 import Candidate from '../../../../models/CandidateSchema';
 import Employer from '../../../../models/EmployerSchema';
+import { getCandidateIdentity } from '../../../../lib/jwt';
 import mongoose from 'mongoose';
 
 export async function POST(req) {
@@ -10,20 +11,12 @@ export async function POST(req) {
     const body = await req.json();
     const { email, token } = body;
 
-    let userEmail = email;
-    if (!userEmail && token) {
-      try {
-        userEmail = Buffer.from(String(token), 'base64').toString('ascii');
-      } catch (e) {
-        // ignore
-      }
-    }
-
-    if (!userEmail) {
+    const identity = getCandidateIdentity({ token, email });
+    if (!identity?.email) {
       return new Response(JSON.stringify({ error: 'email or token required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    const candidate = await Candidate.findOne({ email: userEmail });
+    const candidate = await Candidate.findOne({ email: identity.email });
     if (!candidate) {
       return new Response(JSON.stringify({ error: 'Candidate not found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
     }

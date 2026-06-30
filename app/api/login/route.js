@@ -1,5 +1,6 @@
 import connectDB from '../../../lib/mongodb';
 import Candidate from '../../../models/CandidateSchema';
+import { signJwt } from '../../../lib/jwt';
 
 export async function POST(req) {
   try {
@@ -32,9 +33,13 @@ export async function POST(req) {
       // non-fatal
     }
 
-    const token = Buffer.from(String(user.email)).toString('base64');
+    const token = signJwt({
+      id: String(user._id),
+      email: user.email,
+      role: 'candidate',
+    });
 
-    const payload = { id: user._id, email: user.email, token };
+    const payload = { id: user._id, email: user.email, token, fullName: user.fullName };
 
     return new Response(JSON.stringify({ ok: true, user: payload }), {
       status: 200,

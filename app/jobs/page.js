@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function makeGibberish(len = 12) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -14,7 +15,7 @@ function JobCard({ job }) {
   const gib = useMemo(() => makeGibberish(10), []);
 
   return (
-    <div className="border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+    <Link href={`/jobs/${job._id}`} className="block border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0">
           <img src={job.companyLogo || '/company-placeholder.png'} alt="logo" className="h-12 w-12 rounded-md object-cover" />
@@ -23,8 +24,8 @@ function JobCard({ job }) {
         <div className="flex-1">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-[#0D1630]">{job.title}</h3>
-              <div className="text-sm text-gray-500">{job.department}</div>
+              <h3 className="text-lg font-semibold text-[#0D1630]">{job.positionName || job.title}</h3>
+              <div className="text-sm text-gray-500">{job.industry}</div>
             </div>
 
             <div className="text-right">
@@ -42,12 +43,12 @@ function JobCard({ job }) {
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
                 <strong className="text-gray-800">Exp:</strong>
-                <span>{job.experienceMin || 0} - {job.experienceMax || 0} yrs</span>
+                <span>{job.experienceMin || 0} yrs</span>
               </div>
 
               <div className="flex items-center gap-2">
                 <strong className="text-gray-800">Salary:</strong>
-                <span>₹{job.salaryMin ? (job.salaryMin/1000).toLocaleString() + 'k' : '—'} - {job.salaryMax ? (job.salaryMax/1000).toLocaleString() + 'k' : '—'}</span>
+                <span>{job.salaryRange || '—'}</span>
               </div>
             </div>
 
@@ -72,7 +73,7 @@ function JobCard({ job }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

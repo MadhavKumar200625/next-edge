@@ -5,9 +5,9 @@ export async function GET(req) {
   try {
     await connectDB();
 
-    // return active jobs; explicitly exclude companyName and employerId
+    // return active jobs; explicitly exclude private employer details
     const jobs = await Job.find({ isActive: true, status: 'active' })
-      .select('-companyName -employerId')
+      .select('-companyName -hrName -hrNumber -employerId')
       .sort({ publishedAt: -1 })
       .limit(500)
       .lean();

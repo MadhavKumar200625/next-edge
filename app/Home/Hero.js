@@ -90,7 +90,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/register"
+              href="/signup"
               className="rounded-xl border border-[#0D1630] px-7 py-4 font-semibold text-[#0D1630] transition-all duration-300 hover:bg-[#0D1630] hover:text-white"
             >
               Create Your Profile

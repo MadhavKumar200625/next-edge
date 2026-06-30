@@ -458,7 +458,7 @@ export default function SuccessStoriesPage() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
-                href="/register"
+                href="/signup"
                 className="group inline-flex items-center gap-2 rounded-2xl bg-[#6F925C] px-7 py-4 font-bold text-white transition-colors hover:bg-[#5F7D4F]"
               >
                 Create Your Profile

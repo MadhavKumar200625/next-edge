@@ -33,6 +33,7 @@ export default function LoginPage() {
 
       if (data && data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
+        window.dispatchEvent(new Event("nextedge-auth-change"));
       }
 
       setLoading(false);
@@ -96,7 +97,7 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center text-xs text-gray-400">
-            By signing in you agree to our terms and privacy.
+            New paid accounts can use their contact number as the initial password.
           </div>
         </div>
       </div>

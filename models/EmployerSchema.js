@@ -48,6 +48,43 @@ const EmployerSchema = new mongoose.Schema(
       default: "",
     },
 
+    designation: {
+      type: String,
+      default: "",
+    },
+
+    industryType: {
+      type: String,
+      default: "",
+    },
+
+    linkedInCompanyPage: {
+      type: String,
+      default: "",
+    },
+
+    socialMediaLinks: {
+      facebook: { type: String, default: "" },
+      instagram: { type: String, default: "" },
+      twitter: { type: String, default: "" },
+      other: { type: String, default: "" },
+    },
+
+    genderPreference: {
+      type: String,
+      default: "",
+    },
+
+    hiringManagerName: {
+      type: String,
+      default: "",
+    },
+
+    hiringManagerPhone: {
+      type: String,
+      default: "",
+    },
+
     companyAddress: {
       type: String,
       default: "",

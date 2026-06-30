@@ -3,6 +3,7 @@ import Job from '../../../../models/JobSchema';
 import Candidate from '../../../../models/CandidateSchema';
 import Employer from '../../../../models/EmployerSchema';
 import Application from '../../../../models/ApplicationSchma';
+import { getCandidateIdentity } from '../../../../lib/jwt';
 import mongoose from 'mongoose';
 
 export async function POST(req) {
@@ -16,18 +17,12 @@ export async function POST(req) {
       return new Response(JSON.stringify({ error: 'jobId is required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    let userEmail = email;
-    if (!userEmail && token) {
-      try {
-        userEmail = Buffer.from(String(token), 'base64').toString('ascii');
-      } catch (e) {}
-    }
-
-    if (!userEmail) {
+    const identity = getCandidateIdentity({ token, email });
+    if (!identity?.email) {
       return new Response(JSON.stringify({ error: 'candidate email or token required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    const candidate = await Candidate.findOne({ email: userEmail });
+    const candidate = await Candidate.findOne({ email: identity.email });
     if (!candidate) {
       return new Response(JSON.stringify({ error: 'Candidate not found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
     }
@@ -45,6 +40,15 @@ export async function POST(req) {
     const job = await Job.findById(jobId);
     if (!job) {
       return new Response(JSON.stringify({ error: 'Job not found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    if (!job.isActive || job.status !== 'active') {
+      return new Response(JSON.stringify({ error: 'This job is not accepting applications.' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    const alreadyApplied = await Application.findOne({ jobId: job._id, candidateId: candidate._id });
+    if (alreadyApplied) {
+      return new Response(JSON.stringify({ error: 'You have already applied to this job.' }), { status: 409, headers: { 'Content-Type': 'application/json' } });
     }
 
     // credit commission on first paid action if applicable
@@ -68,6 +72,8 @@ export async function POST(req) {
       candidateId: candidate._id,
       applicationCode: `APP-${Date.now()}-${Math.floor(Math.random() * 9000) + 1000}`,
     });
+
+    await Job.updateOne({ _id: job._id }, { $inc: { totalApplications: 1 } });
 
     return new Response(JSON.stringify({ ok: true, applicationId: application._id }), { status: 201, headers: { 'Content-Type': 'application/json' } });
   } catch (err) {

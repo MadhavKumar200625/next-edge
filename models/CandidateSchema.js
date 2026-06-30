@@ -51,8 +51,7 @@ const CandidateSchema = new mongoose.Schema(
 
     maritalStatus: {
       type: String,
-      enum: ["Single", "Married", "Divorced", "Widowed"],
-      default: null,
+      default: "",
     },
 
     // Contact Details
@@ -111,6 +110,36 @@ const CandidateSchema = new mongoose.Schema(
       default: "",
     },
 
+    class10: {
+      type: String,
+      default: "",
+    },
+
+    class12: {
+      type: String,
+      default: "",
+    },
+
+    graduation: {
+      type: String,
+      default: "",
+    },
+
+    postGraduation: {
+      type: String,
+      default: "",
+    },
+
+    otherQualifications: {
+      type: String,
+      default: "",
+    },
+
+    languagesKnown: {
+      type: [String],
+      default: [],
+    },
+
     specialization: {
       type: String,
       default: "",
@@ -129,6 +158,11 @@ const CandidateSchema = new mongoose.Schema(
     // Employment
 
     currentCompany: {
+      type: String,
+      default: "",
+    },
+
+    currentOrganization: {
       type: String,
       default: "",
     },
@@ -158,6 +192,11 @@ const CandidateSchema = new mongoose.Schema(
       default: "",
     },
 
+    reasonForJobChange: {
+      type: String,
+      default: "",
+    },
+
     preferredJobLocation: {
       type: String,
       default: "",
@@ -171,6 +210,26 @@ const CandidateSchema = new mongoose.Schema(
     },
 
     industryPreference: {
+      type: String,
+      default: "",
+    },
+
+    projects: {
+      type: String,
+      default: "",
+    },
+
+    linkedInId: {
+      type: String,
+      default: "",
+    },
+
+    instagram: {
+      type: String,
+      default: "",
+    },
+
+    otherSocialProfile: {
       type: String,
       default: "",
     },
@@ -189,6 +248,11 @@ const CandidateSchema = new mongoose.Schema(
     // Resume
 
     resumeFile: {
+      type: String,
+      default: "",
+    },
+
+    profileVideo: {
       type: String,
       default: "",
     },

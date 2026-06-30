@@ -8,19 +8,28 @@ import { Menu, X, ArrowRight } from "lucide-react";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   useEffect(() => {
+    const syncUser = () => {
+      setUserLoggedIn(Boolean(localStorage.getItem("user")));
+    };
+
+    syncUser();
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("storage", syncUser);
+    window.addEventListener("nextedge-auth-change", syncUser);
 
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("storage", syncUser);
+      window.removeEventListener("nextedge-auth-change", syncUser);
+    };
   }, []);
 
   const navLinks = [
@@ -93,24 +102,39 @@ export default function Header() {
 
             {/* RIGHT */}
             <div className="hidden lg:flex items-center gap-6">
-              <Link
-                href="/login"
-                className="font-semibold text-[#0D1630] hover:text-[#6F925C] transition"
-              >
-                Sign In
-              </Link>
+              {userLoggedIn ? (
+                <Link
+                  href="/account"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#0D1630] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#152247] hover:shadow-lg"
+                >
+                  My Account
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="font-semibold text-[#0D1630] hover:text-[#6F925C] transition"
+                  >
+                    Sign In
+                  </Link>
 
-              <Link
-                href="/register"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#0D1630] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#152247] hover:shadow-lg"
-              >
-                Get Started
+                  <Link
+                    href="/signup"
+                    className="group inline-flex items-center gap-2 rounded-full bg-[#0D1630] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#152247] hover:shadow-lg"
+                  >
+                    Get Started
 
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
+                    <ArrowRight
+                      size={18}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* MOBILE BUTTON */}
@@ -159,19 +183,30 @@ export default function Header() {
 
             <div className="pt-4 border-t">
               <div className="flex flex-col gap-3">
-                <Link
-                  href="/login"
-                  className="rounded-xl border border-gray-200 px-5 py-3 text-center font-semibold text-[#0D1630]"
-                >
-                  Sign In
-                </Link>
+                {userLoggedIn ? (
+                  <Link
+                    href="/account"
+                    className="rounded-xl bg-[#0D1630] px-5 py-3 text-center font-semibold text-white"
+                  >
+                    My Account
+                  </Link>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="rounded-xl border border-gray-200 px-5 py-3 text-center font-semibold text-[#0D1630]"
+                    >
+                      Sign In
+                    </Link>
 
-                <Link
-                  href="/register"
-                  className="rounded-xl bg-[#0D1630] px-5 py-3 text-center font-semibold text-white"
-                >
-                  Get Started
-                </Link>
+                    <Link
+                      href="/signup"
+                      className="rounded-xl bg-[#0D1630] px-5 py-3 text-center font-semibold text-white"
+                    >
+                      Get Started
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="flex flex-col gap-5 pt-8 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} NextEdge. All rights reserved.</p>
           <Link
-            href="/register"
+            href="/signup"
             className="group inline-flex items-center gap-2 font-semibold text-white/70 transition-colors hover:text-white"
           >
             Join the NextEdge network

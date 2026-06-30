@@ -56,7 +56,7 @@ export default function JoinNextEdge() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
-                href="/register"
+                href="/signup"
                 className="group inline-flex items-center gap-2 rounded-2xl bg-[#6F925C] px-7 py-4 font-bold text-white transition-colors hover:bg-[#5F7D4F]"
               >
                 Get Started for ₹99

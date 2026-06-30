@@ -11,6 +11,7 @@ export async function POST(req) {
     const body = await req.json();
     const {
       title,
+      positionName,
       department,
       companyLogo,
       location,
@@ -26,15 +27,30 @@ export async function POST(req) {
       vacancies,
       skillsRequired,
       qualificationRequired,
+      preferredCandidates,
+      noticePeriod,
       description,
       responsibilities,
       requirements,
       benefits,
+      companyName,
+      hrName,
+      hrNumber,
+      salaryRange,
+      workingDays,
+      shiftTiming,
+      cabFacility,
+      mealFacility,
+      requiredSoftwareTools,
+      languagesRequired,
+      interviewProcess,
       employerId,
     } = body;
 
-    if (!title || !description) {
-      return new Response(JSON.stringify({ error: 'title and description required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    const finalTitle = title || positionName;
+
+    if (!finalTitle || !description) {
+      return new Response(JSON.stringify({ error: 'position name and description required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const hasEmployerId = Boolean(employerId);
@@ -53,8 +69,12 @@ export async function POST(req) {
       employerObjectId = new mongoose.Types.ObjectId();
     }
 
-    let publishNow = !hasEmployerId;
-    if (hasEmployerId && body.publishNow === true) {
+    let publishNow = false;
+    if (!hasEmployerId) {
+      const { error } = await requireAdmin(req);
+      if (error) return error;
+      publishNow = true;
+    } else if (body.publishNow === true) {
       const { admin } = await requireAdmin(req);
       publishNow = Boolean(admin);
     }
@@ -62,10 +82,13 @@ export async function POST(req) {
     const doc = {
       employerId: employerObjectId,
       jobCode: `JOB-${Date.now()}`,
-      title,
+      title: finalTitle,
+      positionName: positionName || finalTitle,
       department: department || '',
+      hrName: hrName || '',
+      hrNumber: hrNumber || '',
       // ensure companyName is non-empty to satisfy schema validation
-      companyName: body.companyName && String(body.companyName).trim() ? String(body.companyName).trim() : (employer?.companyName || employer?.fullName || 'Confidential Employer'),
+      companyName: companyName && String(companyName).trim() ? String(companyName).trim() : (employer?.companyName || employer?.fullName || 'Confidential Employer'),
       companyLogo: companyLogo || '',
       location: location || '',
       city: city || '',
@@ -77,13 +100,23 @@ export async function POST(req) {
       experienceMax: Number(experienceMax) || 0,
       salaryMin: Number(salaryMin) || 0,
       salaryMax: Number(salaryMax) || 0,
+      salaryRange: salaryRange || '',
       vacancies: Number(vacancies) || 1,
       skillsRequired: Array.isArray(skillsRequired) ? skillsRequired : (skillsRequired ? String(skillsRequired).split(',').map(s=>s.trim()).filter(Boolean) : []),
       qualificationRequired: qualificationRequired || '',
+      preferredCandidates: preferredCandidates || '',
+      noticePeriod: noticePeriod || '',
       description,
       responsibilities: Array.isArray(responsibilities) ? responsibilities : (responsibilities ? String(responsibilities).split('\n').map(s=>s.trim()).filter(Boolean) : []),
       requirements: Array.isArray(requirements) ? requirements : (requirements ? String(requirements).split('\n').map(s=>s.trim()).filter(Boolean) : []),
       benefits: Array.isArray(benefits) ? benefits : (benefits ? String(benefits).split('\n').map(s=>s.trim()).filter(Boolean) : []),
+      workingDays: workingDays || '',
+      shiftTiming: shiftTiming || '',
+      cabFacility: cabFacility || '',
+      mealFacility: mealFacility || '',
+      requiredSoftwareTools: requiredSoftwareTools || '',
+      languagesRequired: Array.isArray(languagesRequired) ? languagesRequired : (languagesRequired ? String(languagesRequired).split(',').map(s=>s.trim()).filter(Boolean) : []),
+      interviewProcess: interviewProcess || '',
       status: publishNow ? 'active' : 'draft',
       isActive: publishNow,
       publishedAt: publishNow ? new Date() : null,
