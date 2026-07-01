@@ -81,7 +81,7 @@ export default function LoginPage() {
 
             {error && <div className="text-sm text-red-600">{error}</div>}
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
                 disabled={loading}
@@ -90,9 +90,14 @@ export default function LoginPage() {
                 {loading ? "Signing in..." : "Sign In"}
               </button>
 
-              <Link href="/signup" className="text-sm text-[#6F925C] hover:underline">
-                Create account
-              </Link>
+              <div className="flex flex-col items-start gap-2 text-sm sm:items-end">
+                <Link href="/forgot" className="text-[#6F925C] hover:underline">
+                  Forgot password?
+                </Link>
+                <Link href="/signup" className="text-[#6F925C] hover:underline">
+                  Create account
+                </Link>
+              </div>
             </div>
           </form>
 

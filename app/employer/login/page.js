@@ -39,9 +39,12 @@ export default function EmployerLogin() {
             <input type="password" className="mt-2 w-full rounded-md border border-gray-200 px-3 py-2" value={password} onChange={e=>setPassword(e.target.value)} required />
           </div>
           {error && <div className="text-sm text-red-600">{error}</div>}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <button disabled={loading} className="rounded-full bg-[#0D1630] px-6 py-2 text-white">{loading? 'Signing in...':'Sign In'}</button>
-            <Link href="/" className="text-sm text-[#6F925C]">Back home</Link>
+            <div className="flex flex-col items-start gap-2 text-sm sm:items-end">
+              <Link href="/employer/forgot" className="text-[#6F925C] hover:underline">Forgot password?</Link>
+              <Link href="/" className="text-[#6F925C] hover:underline">Back home</Link>
+            </div>
           </div>
         </form>
       </div>

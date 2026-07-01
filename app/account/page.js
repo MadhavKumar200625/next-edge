@@ -66,6 +66,11 @@ export default function AccountPage() {
         <div>
           <h1 className="text-3xl font-black text-[#0D1630]">My Account</h1>
           <p className="mt-2 text-gray-600">View your profile and applied jobs.</p>
+          <p className="mt-2 text-sm">
+            <a href="/account/change-password" className="font-semibold text-[#6F925C] hover:underline">
+              Change password
+            </a>
+          </p>
         </div>
         <button
           type="button"

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { validateCandidateSignupData } from "@/lib/validation";
 
 const initialForm = {
   fullName: "",
@@ -31,6 +32,7 @@ const initialForm = {
   resumeFile: "",
   profileVideo: "",
   referralCode: "",
+  password: "",
 };
 
 const breakdown = {
@@ -54,7 +56,7 @@ function loadRazorpayScript() {
   });
 }
 
-function Field({ label, name, value, onChange, required = false, type = "text" }) {
+function Field({ label, name, value, onChange, required = false, type = "text", error }) {
   return (
     <label className="block">
       <span className="text-sm font-semibold text-gray-700">
@@ -69,6 +71,7 @@ function Field({ label, name, value, onChange, required = false, type = "text" }
         required={required}
         className="mt-2 w-full rounded-md border border-gray-200 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#6F925C]"
       />
+      {error ? <p className="mt-1 text-sm text-red-600">{error}</p> : null}
     </label>
   );
 }
@@ -97,6 +100,7 @@ export default function SignupPage() {
   const [showPayment, setShowPayment] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
 
   function updateField(event) {
     setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -105,6 +109,13 @@ export default function SignupPage() {
   function handleSubmit(event) {
     event.preventDefault();
     setError("");
+    const errors = validateCandidateSignupData(form);
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setError(Object.values(errors)[0]);
+      return;
+    }
+    setFieldErrors({});
     setShowPayment(true);
   }
 
@@ -193,11 +204,12 @@ export default function SignupPage() {
         <section>
           <h2 className="text-xl font-bold text-[#0D1630]">Basic Information</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <Field label="Full Name" name="fullName" value={form.fullName} onChange={updateField} required />
-            <Field label="Email ID" name="email" value={form.email} onChange={updateField} type="email" required />
-            <Field label="Contact Number" name="phone" value={form.phone} onChange={updateField} required />
-            <Field label="Date of Birth" name="dateOfBirth" value={form.dateOfBirth} onChange={updateField} type="date" required />
-            <Field label="Referral Code" name="referralCode" value={form.referralCode} onChange={updateField} required />
+            <Field label="Full Name" name="fullName" value={form.fullName} onChange={updateField} required error={fieldErrors.fullName} />
+            <Field label="Email ID" name="email" value={form.email} onChange={updateField} type="email" required error={fieldErrors.email} />
+            <Field label="Contact Number" name="phone" value={form.phone} onChange={updateField} type="tel" required error={fieldErrors.phone} />
+            <Field label="Password" name="password" value={form.password} onChange={updateField} type="password" required error={fieldErrors.password} />
+            <Field label="Date of Birth" name="dateOfBirth" value={form.dateOfBirth} onChange={updateField} type="date" required error={fieldErrors.dateOfBirth} />
+            <Field label="Referral Code" name="referralCode" value={form.referralCode} onChange={updateField} required error={fieldErrors.referralCode} />
             <Field label="Marital Status" name="maritalStatus" value={form.maritalStatus} onChange={updateField} />
           </div>
         </section>
@@ -205,26 +217,26 @@ export default function SignupPage() {
         <section>
           <h2 className="text-xl font-bold text-[#0D1630]">Educational Qualification</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <Field label="Class 10" name="class10" value={form.class10} onChange={updateField} required />
-            <Field label="Class 12" name="class12" value={form.class12} onChange={updateField} required />
-            <Field label="Graduation" name="graduation" value={form.graduation} onChange={updateField} />
-            <Field label="Post Graduation" name="postGraduation" value={form.postGraduation} onChange={updateField} />
-            <Field label="Other Qualifications/Certifications" name="otherQualifications" value={form.otherQualifications} onChange={updateField} />
-            <Field label="Languages Known" name="languagesKnown" value={form.languagesKnown} onChange={updateField} required />
+            <Field label="Class 10" name="class10" value={form.class10} onChange={updateField} required error={fieldErrors.class10} />
+            <Field label="Class 12" name="class12" value={form.class12} onChange={updateField} required error={fieldErrors.class12} />
+            <Field label="Graduation" name="graduation" value={form.graduation} onChange={updateField} error={fieldErrors.graduation} />
+            <Field label="Post Graduation" name="postGraduation" value={form.postGraduation} onChange={updateField} error={fieldErrors.postGraduation} />
+            <Field label="Other Qualifications/Certifications" name="otherQualifications" value={form.otherQualifications} onChange={updateField} error={fieldErrors.otherQualifications} />
+            <Field label="Languages Known" name="languagesKnown" value={form.languagesKnown} onChange={updateField} required error={fieldErrors.languagesKnown} />
           </div>
         </section>
 
         <section>
           <h2 className="text-xl font-bold text-[#0D1630]">Professional Details</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <Field label="Key Skills" name="keySkills" value={form.keySkills} onChange={updateField} required />
-            <Field label="Current Location" name="currentLocation" value={form.currentLocation} onChange={updateField} required />
-            <Field label="Current Organization" name="currentOrganization" value={form.currentOrganization} onChange={updateField} required />
-            <Field label="Total Experience" name="totalExperience" value={form.totalExperience} onChange={updateField} type="number" required />
-            <Field label="Current CTC" name="currentCTC" value={form.currentCTC} onChange={updateField} type="number" required />
-            <Field label="Expected CTC" name="expectedCTC" value={form.expectedCTC} onChange={updateField} type="number" required />
-            <Field label="Notice Period" name="noticePeriod" value={form.noticePeriod} onChange={updateField} required />
-            <Field label="Resume" name="resumeFile" value={form.resumeFile} onChange={updateField} required />
+            <Field label="Key Skills" name="keySkills" value={form.keySkills} onChange={updateField} required error={fieldErrors.keySkills} />
+            <Field label="Current Location" name="currentLocation" value={form.currentLocation} onChange={updateField} required error={fieldErrors.currentLocation} />
+            <Field label="Current Organization" name="currentOrganization" value={form.currentOrganization} onChange={updateField} required error={fieldErrors.currentOrganization} />
+            <Field label="Total Experience" name="totalExperience" value={form.totalExperience} onChange={updateField} type="number" required error={fieldErrors.totalExperience} />
+            <Field label="Current CTC" name="currentCTC" value={form.currentCTC} onChange={updateField} type="number" required error={fieldErrors.currentCTC} />
+            <Field label="Expected CTC" name="expectedCTC" value={form.expectedCTC} onChange={updateField} type="number" required error={fieldErrors.expectedCTC} />
+            <Field label="Notice Period" name="noticePeriod" value={form.noticePeriod} onChange={updateField} required error={fieldErrors.noticePeriod} />
+            <Field label="Resume" name="resumeFile" value={form.resumeFile} onChange={updateField} required error={fieldErrors.resumeFile} />
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             <TextArea label="Projects (if any)" name="projects" value={form.projects} onChange={updateField} />
@@ -278,7 +290,7 @@ export default function SignupPage() {
             </div>
 
             <p className="mt-4 text-sm text-gray-500">
-              After payment, your candidate account will be created and you will be sent to the login page. Use your contact number as the initial password.
+              After payment, your candidate account will be created and you will be sent to the login page. Use the password you entered above to sign in. If you don't receive the email, check your spam folder.
             </p>
 
             {error && <div className="mt-4 text-sm font-semibold text-red-600">{error}</div>}

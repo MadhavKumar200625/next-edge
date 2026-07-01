@@ -32,6 +32,8 @@ export async function POST(req) {
       if (employer) {
         const commission = Number(employer.commissionPerSubscription || 9);
         employer.pendingCommission = (Number(employer.pendingCommission) || 0) + commission;
+        employer.totalCommissionEarned =
+          (Number(employer.totalCommissionEarned) || 0) + commission;
         employer.totalPaidSubscriptions = (Number(employer.totalPaidSubscriptions) || 0) + 1;
         employer.totalReferredCandidates = (Number(employer.totalReferredCandidates) || 0) + 1;
         await employer.save();

@@ -221,6 +221,18 @@ const EmployerSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+
+    // Password reset / OTP
+    resetOtp: {
+      type: String,
+      default: null,
+      select: false,
+    },
+
+    resetOtpExpires: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
